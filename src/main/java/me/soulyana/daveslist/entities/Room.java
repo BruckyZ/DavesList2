@@ -48,7 +48,7 @@ public class Room {
 
     @NotNull
     @Size(min=2)
-    private boolean privateBTH;
+    private boolean privatebathroom;
 
     @NotNull
     @Size(min=2)
@@ -72,7 +72,7 @@ public class Room {
         this.rules = rules;
         this.wifi = wifi;
         this.cable = cable;
-        this.privateBTH = privateBTH;
+        this.privatebathroom = privateBTH;
         this.isRented = isRented;
     }
 
@@ -150,11 +150,11 @@ public class Room {
     }
 
     public boolean isPrivateBTH() {
-        return privateBTH;
+        return privatebathroom;
     }
 
     public void setPrivateBTH(boolean privateBTH) {
-        this.privateBTH = privateBTH;
+        this.privatebathroom = privateBTH;
     }
 
     public boolean isRented() {

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="css/Style.css"/>
+</head>
+<body class="body1">
+
+<div class="container">
+    <form action="#" th:action="@{/process}" th:object="${room}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+
+        <label class="fontstyle">address</label>: <input type="text" th:field="*{address}"/>
+        <span th:if="${#fields.hasErrors('address')}"
+              th:errors="*{address}"></span><br/>
+
+        <label class="fontstyle">city</label>: <input type="text" th:field="*{city}"/>
+        <span th:if="${#fields.hasErrors('city')}"
+              th:errors="*{city}"></span><br/>
+
+        <label class="fontstyle">state</label>: <input type="text" th:field="*{state}"/>
+        <span th:if="${#fields.hasErrors('state')}"
+              th:errors="*{state}"></span><br/>
+
+        <label class="fontstyle">price</label>: <input type="text" th:field="*{price}"/>
+        <span th:if="${#fields.hasErrors('price')}"
+              th:errors="*{Breed}"></span><br/>
+
+        <label class="fontstyle">description</label>: <input type="text" th:field="*{description}"/>
+        <span th:if="${#fields.hasErrors('description')}"
+              th:errors="*{description}"></span><br/>
+
+        <label class="fontstyle">rules</label>: <input type="text" th:field="*{rules}"/>
+        <span th:if="${#fields.hasErrors('rules')}"
+              th:errors="*{rules}"></span><br/>
+
+        <label class="fontstyle">wifi</label>: <input type="text" th:field="*{wifi}"/>
+        <span th:if="${#fields.hasErrors('wifi')}"
+              th:errors="*{wifi}"></span><br/>
+
+        <label class="fontstyle">cable</label>: <input type="text" th:field="*{cable}"/>
+        <span th:if="${#fields.hasErrors('cable')}"
+              th:errors="*{cable}"></span><br/>
+
+        <label class="fontstyle">privatebathroom</label>: <input type="text" th:field="*{privatebathroom}"/>
+        <span th:if="${#fields.hasErrors('privatebathroom')}"
+              th:errors="*{privatebathroom}"></span><br/>
+
+
+        <input type="submit" value="submit"/>
+
+    </form>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</div>
+
+</body>
+
+</html>
+
+

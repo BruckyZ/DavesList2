@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login Page</title>
+</head>
+<body>
+
+<form th:action="@{/login}" method="post">
+<div th:if="${param.error}" class="has-error">Invalid username and password</div>
+
+username: <input type="text" name="username" placeholder="Username" required="required" />
+<br/>
+password: <input type="password" name="password" placeholder="Password" required="required" />
+<input type="submit" value="sign in" />
+
+<button>
+<a href="/">Home</a>
+</button>
+
+</form>
+
+</body>
+</html>
