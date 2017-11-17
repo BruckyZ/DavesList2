@@ -1,10 +1,94 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title></title>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="/css/Style.css"/>
+
 </head>
-<body>
-<h2>Your new registered</h2>
+<body class="body3">
+
+<div th:fragment="navlink">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <!--This will collapse the navigation bar and make it shown while clicking the bar even after min size,-->
+                <!--The Collapse start here-->
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#testNavBar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+
+            <div class="collapse navbar-collapse" id="testNavBar">
+                <!--The Collapse end here-->
+
+                <div class="row">
+                    <ul class="nav navbar-nav">
+                        <div class="col-md-6"><li><a href="/">Home</a></li></div>
+
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </nav>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="body2">
+
+<div>
+<h4> New User Registered</h4>
+
+<form autocomplete="off" action="#" th:action="@{/register}"
+      th:object="${room}" method="post">
+    First Name<mark><strong>
+    <span th:if="${#fields.hasErrors('firstName')}"
+          th:error="*{firstName}"></span>
+</strong></mark>
+    <input type="text" id="firstName" placeholder="First Name"
+           th:field="*{firstName}"/><br/>
+
+    Last Name<mark><strong>
+    <span th:if="${#fields.hasErrors('lastName')}"
+          th:error="*{lastName}"></span>
+</strong></mark>
+    <input type="text" id="lastName" placeholder="Last Name"
+           th:field="*{lastName}"/><br/>
+
+    Username<mark><strong>
+    <span th:if="${#fields.hasErrors('username')}"
+          th:error="*{username}"></span>
+</strong></mark>
+    <input type="text" id="username" placeholder="username"
+           th:field="*{username}"/><br/>
+
+    Password<mark><strong>
+    <span th:if="${#fields.hasErrors('password')}"
+          th:error="*{password}"></span>
+</strong></mark>
+    <input type="text" id="password" placeholder="password"
+           th:field="*{password}"/><br/>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+</div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

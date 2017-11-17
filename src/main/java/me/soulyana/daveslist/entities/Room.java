@@ -1,7 +1,5 @@
 package me.soulyana.daveslist.entities;
 
-import org.springframework.jdbc.support.incrementer.AbstractDataFieldMaxValueIncrementer;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -15,51 +13,121 @@ public class Room {
     private long id;
 
     @NotNull
-    @Size(min=10)
-    private String address;
+    @Size(min=1)
+    private String firstName;
 
-    @NotNull
-    @Size(min = 3)
-    private String city;
+    public String getLastName()
+    {
+        return lastName;
+    }
 
-    @NotNull
-    @Size(min= 2)
-    private String state;
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
+
+    public String getUsername()
+    {
+        return username;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    private String email;
+    public void setUsername(String username)
+    {
+        this.username = username;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
 
     @NotNull
     @Size(min=1)
+    private String lastName;
+
+    @NotNull
+    @Size(min=1)
+    private String username;
+
+    @NotNull
+    @Size(min=1)
+    private String password;
+
+    public String getFirstName()
+    {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName)
+    {
+        this.firstName = firstName;
+    }
+
+
+//    @NotNull
+//    @Size(min=10)
+    private String address;
+
+//    @NotNull
+//    @Size(min = 3)
+    private String city;
+
+//    @NotNull
+//    @Size(min= 2)
+    private String state;
+
+//    @NotNull
+//    @Size(min=1)
     private int price;
 
-    @NotNull
-    @Size(min=10)
+//    @NotNull
+//    @Size(min=10)
     private String description;
 
-    @NotNull
-    @Size(min=10)
+//    @NotNull
+//    @Size(min=10)
     private String rules;
 
-    @NotNull
-    @Size(min=2)
+//    @NotNull
+//    @Size(min=2)
     private boolean wifi;
 
-    @NotNull
-    @Size(min=4)
+//    @NotNull
+//    @Size(min=4)
     private String cable;
 
-    @NotNull
-    @Size(min=2)
+//    @NotNull
+//    @Size(min=2)
     private boolean privatebathroom;
 
-    @NotNull
-    @Size(min=2)
+//    @NotNull
+//    @Size(min=2)
     private boolean isRented;
+
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name = "room_id"), inverseJoinColumns = @JoinColumn(name = "admin_id"))
-    private Set<Admin> rooms;
+    private Set<Role> roles;
 
     public Room() {
-        rooms = new HashSet<>();
+        roles = new HashSet<>();
     }
 
 
@@ -165,15 +233,17 @@ public class Room {
         isRented = rented;
     }
 
-    public Set<Admin> getRooms() {
-        return rooms;
-    }
 
-    public void setRooms(Set<Admin> rooms) {
-        this.rooms = rooms;
-    }
+    public Set<Role> getRoles()
+{
+    return roles;
+}
 
-    public void addRooms(Admin aRoom) {
-        rooms.add(aRoom);
+    public void setRoles(Set<Role> roles)
+    {
+        this.roles = roles;
+    }
+    public void addRooms(Role aRoom) {
+        roles.add(aRoom);
     }
 }

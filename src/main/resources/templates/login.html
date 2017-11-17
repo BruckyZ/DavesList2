@@ -2,9 +2,56 @@
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Login Page</title>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="/css/Style.css"/>
+
 </head>
-<body>
+<body class="body3">
+
+<div th:fragment="navlink">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <!--This will collapse the navigation bar and make it shown while clicking the bar even after min size,-->
+                <!--The Collapse start here-->
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#testNavBar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+
+            <div class="collapse navbar-collapse" id="testNavBar">
+                <!--The Collapse end here-->
+
+                <div class="row">
+                    <ul class="nav navbar-nav">
+                        <div class="col-md-6"><li><a href="/">Home</a></li></div>
+
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </nav>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="body2">
+
+                <div>
+                    <h4> New User Registered</h4>
 
 <form th:action="@{/login}" method="post">
 <div th:if="${param.error}" class="has-error">Invalid username and password</div>
@@ -12,13 +59,14 @@
 username: <input type="text" name="username" placeholder="Username" required="required" />
 <br/>
 password: <input type="password" name="password" placeholder="Password" required="required" />
+    <br/>
 <input type="submit" value="sign in" />
 
-<button>
-<a href="/">Home</a>
-</button>
-
 </form>
-
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,6 +1,8 @@
 package me.soulyana.daveslist.controllers;
 
 import me.soulyana.daveslist.entities.Room;
+import me.soulyana.daveslist.entities.UserService;
+import me.soulyana.daveslist.repositories.AdminRepository;
 import me.soulyana.daveslist.repositories.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
 import javax.validation.Valid;
+import javax.xml.bind.SchemaOutputResolver;
 
 @Controller
 public class MainController
@@ -36,6 +39,7 @@ public class MainController
         return "admin";
     }
 
+
     @GetMapping("/register")   //new user registring page
     public String roomform(Model model)
     {
@@ -43,13 +47,29 @@ public class MainController
         return "register";
     }
 
+    @PostMapping("/register")   //admin to add new listing
+    public String newregistered(@Valid @ModelAttribute("room") Room room, BindingResult result, Model model)
+    {
+        model.addAttribute("room", room);
+        if (result.hasErrors())
+        {
+            return "register";
+        }
+        else
+        {
+
+            UserService.saveUser(room);
+            model.addAttribute("message","User account is created...");
+        }
+
+        return "redirect:/login";
+    }
     @GetMapping("/add")   //admin to add new listing
     public String addlisting(Model model)
     {
         model.addAttribute("rooms", new Room());
         return "roomform";
     }
-
 
     @PostMapping("/process")
     public String roomprocess(@Valid Room room, BindingResult result)
@@ -59,7 +79,7 @@ public class MainController
             return "roomform";
         }
         roomRepository.save(room);
-        return "redirect/";
+        return "redirect:/";
     }
 
        @RequestMapping("/detail/{id}")
