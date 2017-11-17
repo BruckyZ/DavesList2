@@ -38,9 +38,10 @@ public class UserService
 		return roomRepository.findByUsername(username);
 	}
 
-	public void saveUser(Room room)
+	public void saveUserAgain(Room room)
 	{
-		room.setRoles(Arrays.asList(adminRepository.findByRole("USER")));
+		room.addRooms(adminRepository.findByRole("USER"));
+
 
 		roomRepository.save(room);
 	}
