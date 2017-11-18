@@ -4,9 +4,11 @@ import me.soulyana.daveslist.repositories.AdminRepository;
 import me.soulyana.daveslist.repositories.RoomRepository;
 import me.soulyana.daveslist.security.SSUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 
+@Service
 public class UserService
 {
 	@Autowired
@@ -38,20 +40,11 @@ public class UserService
 		return roomRepository.findByUsername(username);
 	}
 
-	public void saveUserAgain(Room room)
+
+	public void saveRole(Room room)
 	{
-		room.addRooms(adminRepository.findByRole("USER"));
-
-
-		roomRepository.save(room);
-	}
-
-
-	public void saveUser(Room room)
-	{
-		room.setRoles(Arrays.asList(adminRepository.findByRole("ADMIN")));
-
-		roomRepository.save(room);
+		room.setRoles(AdminRepository.findByRole("USER"));
+		RoomRepository.save(room);
 	}
 
 

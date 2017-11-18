@@ -17,6 +17,9 @@ import javax.xml.bind.SchemaOutputResolver;
 public class MainController
 {
     @Autowired
+    UserService userService;
+
+    @Autowired
     RoomRepository roomRepository;
 
     @RequestMapping("/")
@@ -58,7 +61,7 @@ public class MainController
         else
         {
 
-            UserService.saveUser(room);
+            UserService.saveRole(room);
             model.addAttribute("message","User account is created...");
         }
 
